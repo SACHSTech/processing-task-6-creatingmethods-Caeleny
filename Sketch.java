@@ -2,35 +2,50 @@ import processing.core.PApplet;
 
 public class Sketch extends PApplet {
 	
-	
-  /**
-   * Called once at the beginning of execution, put your size all in this method
-   */
   public void settings() {
-	// put your size call here
-    size(400, 400);
-  }
+    // Background size
+      size(800, 800);
+    }
+  
+    // Background color
+    public void setup() {
+      background(67, 170, 239);
+    }
+    
+    // Set up the method for the house
+    private void house(int size, int x, int y, int color, int color2) {
 
-  /** 
-   * Called once at the beginning of execution.  Add initial set up
-   * values here i.e background, stroke, fill etc.
-   */
-  public void setup() {
-    background(210, 255, 173);
-  }
+      // Main house Structure
+      fill(color, color2, 150);
+      rect(x, y, 75 * size, 50 * size);
 
-  /**
-   * Called repeatedly, anything drawn to the screen goes here
-   */
+      // Door
+      fill(66, 69, 62);
+      rect(x + (65 * size), y + (30 * size), 10 * size, 20 * size);
+
+      // Roof
+      fill(163, 112, 49);
+      rect(x - 2, y - 5, 78 * size, 5 * size);
+
+    }
+  // Draw the houses
   public void draw() {
-	  
-	// sample code, delete this stuff
-    stroke(128);
-    line(150, 25, 270, 350);  
+    int hue = 0;
+    int hue2 = 0;
 
-    stroke(255);
-    line(50, 125, 70, 50);  
+    // Loop the houses to be printed multiple times
+    for (int i = 20; i < width; i += 200) {
+      for (int j = 20; j < height; j += 220) {
+        house(1, i, j, hue, hue2);
+        hue = hue + 20;
+    }
   }
   
-  // define other methods down here.
+  // Draw extra houses
+  house(2, 300, 100, 250, 190);
+  house(3, 500, 300, 250, 60);
+  house(3, 120, 400, 10,250);
+  
+}
+
 }
